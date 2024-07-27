@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import Logo from '/logo.png';
 
 const StyledHeader = styled.header`
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.colors.black};
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1rem;
-  background-color: #f10f62;
-  color: white;
+  padding: ${(props) => props.theme.spacing.medium};
+  background-color: ${(props) => props.theme.colors.main};
+  color: ${(props) => props.theme.colors.light};
 
   & > * {
     flex: 1;
@@ -26,7 +26,7 @@ const NavList = styled.ul`
 `;
 
 const StyledLink = styled(Link)`
-  color: white;
+  color: ${(props) => props.theme.colors.light};
   font-weight: 500;
   text-decoration: none;
   &:hover {
