@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './components/Footer';
+import StyledProvider from './StyledProvider';
 
 const queryClient = new QueryClient();
 
@@ -17,10 +18,12 @@ const Container = styled.div`
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Container>
-        <Outlet />
-        <Footer />
-      </Container>
+      <StyledProvider>
+        <Container>
+          <Outlet />
+          <Footer />
+        </Container>
+      </StyledProvider>
     </QueryClientProvider>
   );
 }

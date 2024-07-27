@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
-  background: #f3f3f3;
-  border-top: 1px solid black;
+  background: ${(props) => props.theme.colors.light};
+  border-top: 1px solid ${(props) => props.theme.colors.black};
   display: flex;
   align-items: center;
   justify-content: center;
