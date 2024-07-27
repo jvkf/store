@@ -1,6 +1,9 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './components/Footer';
+
+const queryClient = new QueryClient();
 
 const Container = styled.div`
   min-height: 100vh;
@@ -13,10 +16,12 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container>
-      <Outlet />
-      <Footer />
-    </Container>
+    <QueryClientProvider client={queryClient}>
+      <Container>
+        <Outlet />
+        <Footer />
+      </Container>
+    </QueryClientProvider>
   );
 }
 
