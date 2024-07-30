@@ -1,7 +1,7 @@
 import { ShoppingCart } from 'lucide-react';
 import styled from 'styled-components';
 
-const AddBtn = styled.button`
+export const ControlBtn = styled.button`
   border: 2px solid ${(props) => props.theme.colors.black};
   appearance: none;
   background: none;
@@ -28,9 +28,9 @@ interface AddBtnProps {
 
 export default function AddCartButton({ onClick }: AddBtnProps) {
   return (
-    <AddBtn onClick={onClick}>
+    <ControlBtn onClick={onClick}>
       <span className="sr-only">Adicionar</span>
       <ShoppingCart strokeWidth={2.5} />
-    </AddBtn>
+    </ControlBtn>
   );
 }
