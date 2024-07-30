@@ -41,11 +41,11 @@ const HeaderLogo = styled.h1`
   justify-content: center;
 `;
 
-interface props {
+interface HeaderProps {
   showCart: boolean;
 }
 
-export default function Header({ showCart = false }: props) {
+export default function Header({ showCart = false }: HeaderProps) {
   return (
     <StyledHeader>
       <nav>
