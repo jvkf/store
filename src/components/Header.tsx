@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import CartBtn from './Cart/CartBtn';
 import Logo from '/logo.png';
 
 const StyledHeader = styled.header`
@@ -61,8 +62,7 @@ export default function Header({ showCart = false }: HeaderProps) {
       <HeaderLogo>
         <img src={Logo} alt="Anivers" />
       </HeaderLogo>
-      {/* TODO: Cart: */}
-      {showCart && <div>Cart</div>}
+      {showCart && <CartBtn />}
     </StyledHeader>
   );
 }

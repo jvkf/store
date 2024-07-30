@@ -1,3 +1,20 @@
+import { Minus, Plus } from 'lucide-react';
+import styled from 'styled-components';
+import { ControlBtn } from './AddCartButton';
+
+const InputBar = styled.div`
+  display: flex;
+  gap: 5px;
+  flex-flow: row nowrap;
+  align-items: center;
+`;
+
+const AmountText = styled.div`
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  border: 1px solid black;
+`;
 interface CartProps {
   amount: number;
   onIncreaseClick: () => void;
@@ -10,10 +27,19 @@ export default function CartInput({
   onDecreaseClick,
 }: CartProps) {
   return (
-    <div>
-      <button onClick={onIncreaseClick}>+</button>
-      <div aria-label="Quantidade">{amount}</div>
-      <button onClick={onDecreaseClick}>-</button>
-    </div>
+    <InputBar>
+      <ControlBtn onClick={onDecreaseClick}>
+        <Minus strokeWidth={3} />
+        <span className="sr-only">-</span>
+      </ControlBtn>
+
+      <AmountText aria-label="Quantidade" aria-live="polite">
+        {amount}
+      </AmountText>
+      <ControlBtn onClick={onIncreaseClick}>
+        <Plus strokeWidth={3} />
+        <span className="sr-only">+</span>
+      </ControlBtn>
+    </InputBar>
   );
 }
