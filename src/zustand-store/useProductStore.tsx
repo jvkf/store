@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Product } from '../routes/store/useProductsQuery';
 
-interface ProductWithAmount extends Product {
+export interface ProductWithAmount extends Product {
   amount: number;
 }
 
@@ -11,6 +11,7 @@ interface ProductStore {
   addToCart: (product: Product) => () => void;
   increaseAmount: (productId: number) => () => void;
   decreaseAmount: (productId: number) => () => void;
+  deleteItem: (productId: number) => () => void;
 }
 
 const useProductStore = create<ProductStore>()(
@@ -20,7 +21,12 @@ const useProductStore = create<ProductStore>()(
       addToCart: (product) => () =>
         set((state) => {
           const productWithAmount = { ...product, amount: 1 };
-          return { cart: [...state.cart, productWithAmount] };
+          const existsOnCart =
+            state.cart.some((p) => p.id === product.id) || false;
+          if (!existsOnCart) {
+            return { cart: [...state.cart, productWithAmount] };
+          }
+          return { cart: state.cart };
         }),
       increaseAmount: (productId) => () =>
         set((state) => ({
@@ -29,6 +35,10 @@ const useProductStore = create<ProductStore>()(
       decreaseAmount: (productId) => () =>
         set((state) => ({
           cart: updateProductAmount(state.cart, productId, -1),
+        })),
+      deleteItem: (productId) => () =>
+        set((state) => ({
+          cart: state.cart.filter((p) => p.id !== productId),
         })),
     }),
     {
