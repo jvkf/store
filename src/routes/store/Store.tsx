@@ -4,12 +4,12 @@ import Header from '../../components/Header';
 import Spinner from '../../components/Spinner';
 import { useProductsQuery, type Product } from './useProductsQuery';
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const Main = styled.main`
+export const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
