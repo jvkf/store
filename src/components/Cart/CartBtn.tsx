@@ -1,6 +1,8 @@
 import { ShoppingBasket } from 'lucide-react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import useProductStore from '../../zustand-store/useProductStore';
+import CartModal from './CartModal';
 
 const HeaderButton = styled.button`
   background-color: white;
@@ -19,6 +21,7 @@ const HeaderButton = styled.button`
 
 const HeaderContainer = styled.div`
   text-align: right;
+  position: relative;
 `;
 
 const CartNumber = styled.span`
@@ -37,15 +40,20 @@ const CartNumber = styled.span`
 
 export default function CartBtn() {
   const numberOfProducts = useProductStore((state) => state.cart).reduce(
-    (acc: number, cv) => {
+    (acc, cv) => {
       return (acc += cv.amount);
     },
     0
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCartClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <HeaderContainer>
-      <HeaderButton>
+      <HeaderButton onClick={handleCartClick}>
         <span className="sr-only">Clique para ver o carrinho</span>
         <ShoppingBasket />
         {numberOfProducts !== 0 && (
@@ -54,6 +62,7 @@ export default function CartBtn() {
           </CartNumber>
         )}
       </HeaderButton>
+      <CartModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </HeaderContainer>
   );
 }
