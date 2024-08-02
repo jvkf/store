@@ -63,6 +63,7 @@ export default function Header({ showCart = false }: HeaderProps) {
         <img src={Logo} alt="Anivers" />
       </HeaderLogo>
       {showCart && <CartBtn />}
+      {!showCart && <div></div>}
     </StyledHeader>
   );
 }
