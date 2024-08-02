@@ -31,12 +31,12 @@ const Image = styled.img`
 `;
 
 const Title = styled.h2`
-  font-size: 1rem;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   font-weight: 500;
 `;
 
 const Price = styled.h3`
-  font-size: 0.85rem;
+  font-size: ${(props) => props.theme.fontSizes.small};
   font-weight: 700;
   padding-top: ${(props) => props.theme.spacing.small};
 `;

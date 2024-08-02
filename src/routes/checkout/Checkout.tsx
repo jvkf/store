@@ -12,7 +12,8 @@ const ProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: ${(props) =>
+    `${props.theme.spacing.medium} ${props.theme.spacing.xlarge}`};
 `;
 
 const ColumnMain = styled(Main)`

@@ -7,8 +7,8 @@ const StyledInput = styled.input`
   appearance: none;
   border: 1px solid black;
   border-radius: 4px;
-  padding: 0.25rem;
-  font-size: 0.9rem;
+  padding: ${(props) => props.theme.spacing.xsmall};
+  font-size: ${(props) => props.theme.fontSizes.small};
 `;
 
 const ErrorMessage = styled.span`

@@ -9,7 +9,7 @@ export const Container = styled.article`
   gap: 20px;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: ${(props) => props.theme.spacing.small} 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
   & > * {
@@ -19,7 +19,7 @@ export const Container = styled.article`
 
 const Header = styled.h3`
   font-weight: 500;
-  font-size: 1rem;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   flex-grow: 1;
   flex-shrink: 1;
 `;
@@ -36,25 +36,30 @@ const DeleteBtn = styled.button`
 
 const Price = styled.p`
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: ${(props) => props.theme.fontSizes.small};
   display: flex;
   flex-direction: column;
   align-items: center;
 
   & > div {
-    font-size: 0.7rem;
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
   }
 `;
 
 const Amount = styled.p`
   font-weight: 600;
+  font-size: ${(props) => props.theme.fontSizes.small};
   display: flex;
   flex-direction: column;
   align-items: center;
 
   & > div {
-    font-size: 0.7rem;
+    font-size: ${(props) => props.theme.fontSizes.xsmall};
   }
+`;
+
+const Block = styled.span`
+  display: block;
 `;
 
 export interface CartProductProps {
@@ -70,15 +75,15 @@ export default function CartProduct({
     <Container>
       <DeleteBtn onClick={handleDelete}>
         <SquareXIcon />
-        <span className="sr-only">Delete product</span>
+        <span className="sr-only">Deletar produto</span>
       </DeleteBtn>
       <Header>{product.title}</Header>
       <Price>
-        <div>Preço Un.</div>
+        <Block>Preço Un.</Block>
         {formatCurrency(product.price)}
       </Price>
       <Amount>
-        <div>Qtd: </div>
+        <Block>Qtd: </Block>
         {product.amount}
       </Amount>
     </Container>
