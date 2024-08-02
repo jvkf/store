@@ -60,7 +60,7 @@ export default function Header({ showCart = false }: HeaderProps) {
         </NavList>
       </nav>
       <HeaderLogo>
-        <img src={Logo} alt="Anivers" />
+        <img src={Logo} alt="Presentins" />
       </HeaderLogo>
       {showCart && <CartBtn />}
       {!showCart && <div></div>}
