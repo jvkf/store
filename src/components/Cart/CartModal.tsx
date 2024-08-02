@@ -16,12 +16,11 @@ const Modal = styled.dialog`
   border-radius: 6px;
   width: 85vw;
   max-width: 500px;
-  max-height: 60vh;
-  overflow-y: auto;
-  padding: ${(props) => props.theme.spacing.xlarge} 0.7rem 0;
+  padding: ${(props) => props.theme.spacing.xlarge}
+    ${(props) => props.theme.spacing.small} 0;
 `;
 
-const Header = styled.h3`
+const Header = styled.h2`
   border-bottom: 1px solid black;
   padding-bottom: ${(props) => props.theme.spacing.xsmall};
   margin-bottom: ${(props) => props.theme.spacing.medium};
@@ -51,13 +50,13 @@ export const TotalPrice = styled.div`
   align-items: center;
   font-weight: 600;
   gap: 10px;
-  font-size: 1.2rem;
-  padding-top: ${(props) => props.theme.spacing.small};
+  font-size: ${(props) => props.theme.fontSizes.large};
+  padding-top: ${(props) => props.theme.spacing.medium};
 `;
 
-const FinishBtn = styled.button`
+export const FinishBtn = styled.button`
   display: block;
-  margin: 0 auto 0.5rem;
+  margin: 0.25rem auto 0.5rem;
   width: fit-content;
   padding: 0.75rem;
   background-color: ${(props) => props.theme.colors.main};

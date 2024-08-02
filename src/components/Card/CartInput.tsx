@@ -10,9 +10,9 @@ const InputBar = styled.div`
 `;
 
 const AmountText = styled.div`
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontSizes.xsmall};
   font-weight: 500;
-  padding: 0 0.5rem;
+  padding: 0 ${(props) => props.theme.spacing.small};
   border: 1px solid black;
 `;
 interface CartProps {
@@ -32,7 +32,6 @@ export default function CartInput({
         <Minus strokeWidth={3} />
         <span className="sr-only">-</span>
       </ControlBtn>
-
       <AmountText aria-label="Quantidade" aria-live="polite">
         {amount}
       </AmountText>
