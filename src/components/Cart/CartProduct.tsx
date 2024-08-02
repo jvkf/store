@@ -37,10 +37,24 @@ const DeleteBtn = styled.button`
 const Price = styled.p`
   font-weight: 600;
   font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > div {
+    font-size: 0.7rem;
+  }
 `;
 
 const Amount = styled.p`
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > div {
+    font-size: 0.7rem;
+  }
 `;
 
 export interface CartProductProps {
@@ -59,8 +73,14 @@ export default function CartProduct({
         <span className="sr-only">Delete product</span>
       </DeleteBtn>
       <Header>{product.title}</Header>
-      <Price>{formatCurrency(product.price)}</Price>
-      <Amount>{product.amount}</Amount>
+      <Price>
+        <div>Preço Un.</div>
+        {formatCurrency(product.price)}
+      </Price>
+      <Amount>
+        <div>Qtd: </div>
+        {product.amount}
+      </Amount>
     </Container>
   );
 }
