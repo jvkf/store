@@ -79,8 +79,8 @@ export default function Form({ cart }: FormProps) {
     resolver: zodResolver(formSchema),
   });
 
-  function handlePaymentForm(data: FormSchema) {
-    console.log(data, cart);
+  const resetCart = useProductStore.getState().reset;
+    resetCart();
   }
 
   return (
