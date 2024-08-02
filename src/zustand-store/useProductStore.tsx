@@ -6,18 +6,26 @@ export interface ProductWithAmount extends Product {
   amount: number;
 }
 
-interface ProductStore {
-  cart: ProductWithAmount[];
+interface ProductStoreActions {
   addToCart: (product: Product) => () => void;
   increaseAmount: (productId: number) => () => void;
   decreaseAmount: (productId: number) => () => void;
   deleteItem: (productId: number) => () => void;
+  reset: () => void;
 }
 
-const useProductStore = create<ProductStore>()(
+export interface ProductStoreState {
+  cart: ProductWithAmount[];
+}
+
+const initialState: ProductStoreState = {
+  cart: [],
+};
+
+const useProductStore = create<ProductStoreActions & ProductStoreState>()(
   persist(
     (set) => ({
-      cart: [],
+      ...initialState,
       addToCart: (product) => () =>
         set((state) => {
           const productWithAmount = { ...product, amount: 1 };
@@ -40,6 +48,9 @@ const useProductStore = create<ProductStore>()(
         set((state) => ({
           cart: state.cart.filter((p) => p.id !== productId),
         })),
+      reset: () => {
+        set(initialState);
+      },
     }),
     {
       name: 'cart-storage',
