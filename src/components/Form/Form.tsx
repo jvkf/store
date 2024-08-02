@@ -128,7 +128,7 @@ export default function Form({ cart }: FormProps) {
               defaultValue:
                 new Date().getUTCFullYear().toString() +
                 '-' +
-                new Date().getMonth().toString().padStart(2, '0'),
+                (new Date().getMonth() + 1).toString().padStart(2, '0'),
             }}
           />
         </InputContainer>

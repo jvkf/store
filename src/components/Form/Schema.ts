@@ -22,7 +22,7 @@ export const formSchema = z.object({
         message: issue.code === 'invalid_date' ? 'Data inválida' : defaultError,
       }),
     })
-    .min(new Date(), {
+    .min(new Date(new Date().setDate(-1)), {
       message: 'A data de vencimento não pode já ter passado.',
     }),
 });
