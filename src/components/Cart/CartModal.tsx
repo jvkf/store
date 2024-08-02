@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useProductStore from '../../zustand-store/useProductStore';
+import { formatCurrency } from '../Card/Card';
 import CartProduct from './CartProduct';
 
 const Modal = styled.dialog`
@@ -16,7 +18,7 @@ const Modal = styled.dialog`
   max-width: 500px;
   max-height: 60vh;
   overflow-y: auto;
-  padding: ${(props) => props.theme.spacing.xlarge} 0.7rem;
+  padding: ${(props) => props.theme.spacing.xlarge} 0.7rem 0;
 `;
 
 const Header = styled.h3`
@@ -42,6 +44,33 @@ const CloseButton = styled.button`
   }
 `;
 
+export const TotalPrice = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 600;
+  gap: 10px;
+  font-size: 1.2rem;
+  padding-top: ${(props) => props.theme.spacing.small};
+`;
+
+const FinishBtn = styled.button`
+  display: block;
+  margin: 0 auto 0.5rem;
+  width: fit-content;
+  padding: 0.75rem;
+  background-color: ${(props) => props.theme.colors.main};
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 200ms ease-in;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.secondary};
+  }
+`;
+
 interface CartModalProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -52,6 +81,10 @@ export default function CartModal({ isOpen, setIsOpen }: CartModalProps) {
     state.cart,
     state.deleteItem,
   ]);
+
+  const totalPrice = cart.reduce((acc, product) => {
+    return (acc += product.price * product.amount);
+  }, 0);
 
   return (
     <Modal open={isOpen}>
@@ -66,6 +99,15 @@ export default function CartModal({ isOpen, setIsOpen }: CartModalProps) {
           key={product.id}
         />
       ))}
+      {totalPrice !== 0 && (
+        <TotalPrice>
+          <div>Total:</div>
+          {formatCurrency(totalPrice)}
+        </TotalPrice>
+      )}
+      <FinishBtn as={Link} to={'/checkout'}>
+        Finalizar
+      </FinishBtn>
     </Modal>
   );
 }
