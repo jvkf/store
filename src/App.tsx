@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { PropsWithChildren } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './components/Footer';
@@ -15,12 +16,13 @@ const Container = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 `;
 
-function App() {
+function App({ children }: PropsWithChildren) {
   return (
     <QueryClientProvider client={queryClient}>
       <StyledProvider>
         <Container>
           <Outlet />
+          {children}
           <Footer />
         </Container>
       </StyledProvider>
