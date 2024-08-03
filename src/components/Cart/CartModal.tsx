@@ -39,8 +39,8 @@ const CloseButton = styled.button`
   font-weight: 500;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.secondary};
-    border-color: ${(props) => props.theme.colors.secondary};
+    background-color: ${(props) => props.theme.colors.complementary};
+    border-color: ${(props) => props.theme.colors.complementary};
     color: ${(props) => props.theme.colors.light};
   }
 `;

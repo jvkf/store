@@ -1,13 +1,13 @@
 import { PropsWithChildren } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
-const theme = {
+const theme: DefaultTheme = {
   colors: {
-    main: '#F10F62',
-    secondary: '#0E79B2',
-    complementary: '#4D7EA8',
+    main: '#D90429',
+    secondary: '#2B2D42',
+    complementary: '#8D99AE',
     black: '#191923',
-    light: '#FBFEF9',
+    light: '#EDF2F4',
   },
   fontSizes: {
     xsmall: '0.7rem',
