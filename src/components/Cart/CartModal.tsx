@@ -85,6 +85,8 @@ export default function CartModal({ isOpen, setIsOpen }: CartModalProps) {
     return (acc += product.price * product.amount);
   }, 0);
 
+  const isCartEmpty = cart.length === 0;
+
   return (
     <Modal open={isOpen}>
       <Header>Carrinho</Header>
@@ -98,15 +100,17 @@ export default function CartModal({ isOpen, setIsOpen }: CartModalProps) {
           key={product.id}
         />
       ))}
-      {totalPrice !== 0 && (
-        <TotalPrice>
-          <div>Total:</div>
-          {formatCurrency(totalPrice)}
-        </TotalPrice>
+      {!isCartEmpty && (
+        <>
+          <TotalPrice>
+            <div>Total:</div>
+            {formatCurrency(totalPrice)}
+          </TotalPrice>
+          <FinishBtn as={Link} to={'/checkout'}>
+            Finalizar
+          </FinishBtn>
+        </>
       )}
-      <FinishBtn as={Link} to={'/checkout'}>
-        Finalizar
-      </FinishBtn>
     </Modal>
   );
 }

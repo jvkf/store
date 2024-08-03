@@ -1,5 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Product } from '../../../routes/store/useProductsQuery';
 import StyledProvider from '../../../StyledProvider';
@@ -122,9 +123,11 @@ describe('Modal', () => {
 
 const renderModal = () => {
   return render(
-    <StyledProvider>
-      <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
-    </StyledProvider>
+    <MemoryRouter>
+      <StyledProvider>
+        <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      </StyledProvider>
+    </MemoryRouter>
   );
 };
 
