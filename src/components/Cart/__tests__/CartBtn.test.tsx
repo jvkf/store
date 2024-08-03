@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import type { Product } from '../../../routes/store/useProductsQuery';
 import StyledProvider from '../../../StyledProvider';
 import useProductStore from '../../../zustand-store/useProductStore';
