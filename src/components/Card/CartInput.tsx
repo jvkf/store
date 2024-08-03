@@ -10,9 +10,9 @@ const InputBar = styled.div`
 `;
 
 const AmountText = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
+  font-size: ${(props) => props.theme.fontSizes.small};
   font-weight: 500;
-  padding: 0 ${(props) => props.theme.spacing.small};
+  padding: ${(props) => props.theme.spacing.small};
   border: 1px solid black;
 `;
 interface CartProps {

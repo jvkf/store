@@ -16,6 +16,8 @@ const Modal = styled.dialog`
   border-radius: 6px;
   width: 85vw;
   max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: ${(props) => props.theme.spacing.xlarge}
     ${(props) => props.theme.spacing.small} 0;
 `;
