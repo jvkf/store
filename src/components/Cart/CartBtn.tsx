@@ -15,7 +15,7 @@ const HeaderButton = styled.button`
   box-shadow: 0 0 15px 6px rgba(255, 255, 255, 0.3);
 
   &:hover {
-    box-shadow: 0 0 4px 6px rgba(118, 178, 230, 0.3);
+    box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.5);
   }
 `;
 

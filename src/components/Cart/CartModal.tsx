@@ -16,6 +16,8 @@ const Modal = styled.dialog`
   border-radius: 6px;
   width: 85vw;
   max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: ${(props) => props.theme.spacing.xlarge}
     ${(props) => props.theme.spacing.small} 0;
 `;
@@ -37,8 +39,8 @@ const CloseButton = styled.button`
   font-weight: 500;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.secondary};
-    border-color: ${(props) => props.theme.colors.secondary};
+    background-color: ${(props) => props.theme.colors.complementary};
+    border-color: ${(props) => props.theme.colors.complementary};
     color: ${(props) => props.theme.colors.light};
   }
 `;

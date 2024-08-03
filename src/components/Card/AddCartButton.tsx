@@ -16,8 +16,8 @@ export const ControlBtn = styled.button`
   flex-shrink: 0;
 
   &:hover {
-    border-color: ${(props) => props.theme.colors.complementary};
-    background-color: ${(props) => props.theme.colors.complementary};
+    border-color: ${(props) => props.theme.colors.secondary};
+    background-color: ${(props) => props.theme.colors.secondary};
     color: ${(props) => props.theme.colors.light};
   }
 `;
