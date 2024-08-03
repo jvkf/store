@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Product } from '../../../routes/store/useProductsQuery';
 import StyledProvider from '../../../StyledProvider';
 import useProductStore from '../../../zustand-store/useProductStore';
@@ -32,7 +33,7 @@ describe('Cart Button', () => {
     await user.click(cartBtn);
 
     const modal = screen.getByRole('dialog');
-    const title = within(modal).getByRole('heading', { level: 3 });
+    const title = within(modal).getByRole('heading', { level: 2 });
 
     expect(modal).toBeInTheDocument();
     expect(title.textContent).toBe('Carrinho');
@@ -56,9 +57,11 @@ describe('Cart Button', () => {
 
 const renderCartBtn = () => {
   return render(
-    <StyledProvider>
-      <CartBtn />
-    </StyledProvider>
+    <MemoryRouter>
+      <StyledProvider>
+        <CartBtn />
+      </StyledProvider>
+    </MemoryRouter>
   );
 };
 
