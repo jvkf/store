@@ -26,8 +26,8 @@ export default function Footer() {
   return (
     <StyledFooter>
       Desenvolvido por&nbsp;
-      <StyledLink href="https://github.com/p1padev" target="_blank">
-        p1pa
+      <StyledLink href="https://github.com/jvkf" target="_blank">
+        jota
       </StyledLink>
     </StyledFooter>
   );
